@@ -35,11 +35,11 @@ A variety of visualizations were generated to explore the dataset and showcase i
 
 1. Clone this repository:
    ```sh
-   git clone [https://github.com/your-username/exoplanet-transit-detection.git
+   git clone https://github.com/wittyicon29/Exo-Transit-Regression.git
    ```
 2. Navigate to the repository:
    ```sh
-   cd exo-transit-detection
+   cd Exo Transit Regression
    ```
 3. Install the required dependencies
 4. Run the MATLAB scripts for data preprocessing, EDA, and modeling.
