@@ -1,0 +1,22 @@
+Logistic Regression - 
+Accuracy: 77.04%
+Precision: 0.91
+Recall: 0.81
+F1-Score: 0.86
+
+
+Random Forest - 
+Accuracy: 88.23%
+
+
+SVM - 
+Accuracy: 69.72%
+Precision: 0.91
+Recall: 0.81
+F1-Score: 0.86
+
+MLP -
+Accuracy: 87.87%
+Precision: 0.92
+Recall: 0.92
+F1-Score: 0.92
