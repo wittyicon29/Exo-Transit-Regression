@@ -1,0 +1,37 @@
+data = importdata("cumulative.csv");
+
+data = readtable("cumulative.csv");
+
+numericColumns = {'koi_period', 'koi_time0bk', 'koi_impact', 'koi_duration', ...
+                  'koi_depth', 'koi_prad', 'koi_teq', 'koi_insol', ...
+                  'koi_steff', 'koi_slogg', 'koi_srad', 'koi_kepmag'};
+for i = 1:numel(numericColumns)
+    columnName = numericColumns{i};
+    data.(columnName) = fillmissing(data.(columnName), 'previous');
+end
+
+ selectedFeatures = data{:, {'koi_period', 'koi_time0bk', 'koi_impact', 'koi_duration', ...
+                             'koi_depth', 'koi_prad', 'koi_teq', 'koi_insol', ...
+                             'koi_model_snr', 'koi_steff', 'koi_slogg', 'koi_srad'}};
+                             
+normalizedFeatures = normalize(selectedFeatures);
+
+targetVariable = strcmp(data.koi_disposition, 'CONFIRMED'); % Binary target variable
+
+featureColumns = {'koi_period', 'koi_time0bk', 'koi_impact', 'koi_duration', ...
+                  'koi_depth', 'koi_prad', 'koi_teq', 'koi_insol', ...
+                  'koi_model_snr', 'koi_steff', 'koi_slogg', 'koi_srad'};
+                  
+X = data{:, featureColumns};
+y = targetVariable;
+
+testProportion = 0.2;
+
+cv = cvpartition(y, 'HoldOut', testProportion);
+trainIndices = training(cv);
+testIndices = test(cv);
+
+X_train = X(trainIndices, :);
+y_train = y(trainIndices);
+X_test = X(testIndices, :);
+y_test = y(testIndices);
