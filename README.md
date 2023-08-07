@@ -31,6 +31,28 @@ A variety of visualizations were generated to explore the dataset and showcase i
 - Correlation heatmaps with dendrograms.
 - Interactive plots using Plotly for dynamic exploration.
 
+## Plots 
+Logistic Regression - 
+
+![ROC - Logistic regression](https://github.com/wittyicon29/Exo-Transit-Regression/assets/99320225/f4dad2e2-b05f-4c8d-9680-88688da494ef)
+
+Random Forest -
+
+![ROC - RF](https://github.com/wittyicon29/Exo-Transit-Regression/assets/99320225/af5313ea-043e-43c2-b78b-d37997b24fac)
+
+SVM -
+
+![ROC - SVM](https://github.com/wittyicon29/Exo-Transit-Regression/assets/99320225/42266557-83b6-434a-bb2e-f7c7c0b60396)
+
+MLP -
+
+![ROC - MLP](https://github.com/wittyicon29/Exo-Transit-Regression/assets/99320225/4ab9e86d-c5bb-44e9-a4ea-22aab7455320)
+
+
+Mesh Plot Normalizaed Features - 
+
+![Normalized Features](https://github.com/wittyicon29/Exo-Transit-Regression/assets/99320225/67cc442f-6e53-4d8c-8740-ecbaaccf26a6)
+
 ## Usage
 
 1. Clone this repository:
