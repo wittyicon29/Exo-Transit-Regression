@@ -1,0 +1,80 @@
+% Logistic Regression -
+y_pred = y_pred_probs >= 0.5;
+accuracy = sum(y_pred == y_test) / length(y_test);
+confusionMat = confusionmat(y_test, y_pred);
+truePositive = confusionMat(1, 1);
+falsePositive = confusionMat(1, 2);
+falseNegative = confusionMat(2, 1);
+trueNegative = confusionMat(2, 2);
+precision = truePositive / (truePositive + falsePositive);
+recall = truePositive / (truePositive + falseNegative);
+f1Score = 2 * (precision * recall) / (precision + recall);
+
+fprintf('Accuracy: %.2f%%\n', accuracy * 100);
+fprintf('Precision: %.2f\n', precision);
+fprintf('Recall: %.2f\n', recall);
+fprintf('F1-Score: %.2f\n', f1Score);
+
+[X_roc, Y_roc, ~, AUC] = perfcurve(y_test, y_pred_probs, 1);
+figure;
+plot(X_roc, Y_roc);
+xlabel('False Positive Rate');
+ylabel('True Positive Rate');
+title(['ROC Curve (AUC = ', num2str(AUC), ')']);
+grid on;
+
+% Random Forest - 
+y_pred_rf = str2double(y_pred_rf);
+accuracy = sum(y_pred_rf == y_test) / length(y_test);
+
+[X_roc, Y_roc, ~, AUC] = perfcurve(y_test, y_pred_probs, 1);
+figure;
+plot(X_roc, Y_roc);
+xlabel('False Positive Rate');
+ylabel('True Positive Rate');
+title(['ROC Curve (AUC = ', num2str(AUC), ')']);
+grid on;
+
+% SVM -
+accuracy_svm = sum(y_pred_svm == y_test) / length(y_test);
+confusionMat_svm = confusionmat(y_test, y_pred_svm);
+truePositive_svm = confusionMat_svm(1, 1);
+falsePositive_svm = confusionMat_svm(1, 2);
+falseNegative_svm = confusionMat_svm(2, 1);
+trueNegative_svm = confusionMat_svm(2, 2);
+precision_svm = truePositive / (truePositive + falsePositive);
+recall_svm = truePositive / (truePositive + falseNegative);
+f1Score_svm = 2 * (precision * recall) / (precision + recall);
+
+fprintf('Accuracy: %.2f%%\n', accuracy_svm * 100);
+fprintf('Precision: %.2f\n', precision_svm);
+fprintf('Recall: %.2f\n', recall_svm);
+fprintf('F1-Score: %.2f\n', f1Score_svm);
+
+[X_roc, Y_roc, ~, AUC] = perfcurve(y_test, y_pred_svm, 1);
+figure;
+plot(X_roc, Y_roc);
+xlabel('False Positive Rate');
+ylabel('True Positive Rate');
+title(['ROC Curve (AUC = ', num2str(AUC), ')']);
+grid on;
+
+% MLP model -
+confusionMat_mlp = confusionmat(y_test, y_pred_mlp);
+truePositive = confusionMat_mlp(1, 1);
+falsePositive = confusionMat_mlp(1, 2);
+falseNegative = confusionMat_mlp(2, 1);
+trueNegative = confusionMat_mlp(2, 2);
+
+accuracy_mlp = (truePositive + trueNegative) / ...
+               (truePositive + trueNegative + falsePositive + falseNegative);
+precision_mlp = truePositive / (truePositive + falsePositive);
+recall_mlp = truePositive / (truePositive + falseNegative);
+f1Score_mlp = 2 * (precision_mlp * recall_mlp) / (precision_mlp + recall_mlp);
+
+fprintf('Neural Network (MLP):\n');
+fprintf('Accuracy: %.2f%%\n', accuracy_mlp * 100);
+fprintf('Precision: %.2f\n', precision_mlp);
+fprintf('Recall: %.2f\n', recall_mlp);
+fprintf('F1-Score: %.2f\n', f1Score_mlp);
+
