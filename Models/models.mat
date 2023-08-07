@@ -1,0 +1,21 @@
+% Logistic Regression -
+model = fitglm(X_train, y_train, 'Distribution', 'binomial');
+disp(model);
+y_pred_probs = predict(model, X_test);
+
+% Random Forest -
+model_rf = TreeBagger(100, X_train, y_train, 'Method', 'classification');
+disp(model_rf);
+y_pred_rf = predict(model_rf, X_test);
+
+% SVM -
+model_svm = fitcsvm(X_train, y_train);
+disp(model_svm);
+y_pred_svm = predict(model_svm, X_test);
+
+% Multilayer Perceptron (MLP) model
+hiddenLayerSize = 10;
+model_mlp = fitcnet(X_train, y_train, 'Standardize', true, ...
+    'LayerSizes', hiddenLayerSize, 'Verbose', 0);
+disp(model_mlp);
+ y_pred_mlp = predict(model_mlp, X_test);
